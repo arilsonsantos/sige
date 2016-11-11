@@ -1,0 +1,36 @@
+.form-horizontal{
+	font-size: 11px;
+}
+
+.form-control{
+	font-size: 11px;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 30px;
+}
+
+.navbar-brand{
+	padding-top: 12px;
+}
+
+.panel-default{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.alert{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.sige-link-panel{
+	float: right;
+	padding: 0px;
+}
+
+.sige-titulo-panel{
+	float: left;
+	padding-top: 2px;
+}
+

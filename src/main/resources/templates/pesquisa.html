@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://wwww.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.zn/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Cadastro de Conta</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title sige-titulo-panel">Pesquisa</h1>
+				<a class="btn btn-link sige-link-panel" href="/contas/novo">Nova	Conta</a>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="text-center col-md-1">#</th>
+						<th>Descrição</th>
+						<th class="text-center col-md-2">Data de vencimento</th>
+						<th class="text-center col-md-2">Valor</th>
+						<th class="text-center col-md-2">Status</th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="conta: ${contas}" >
+						<td class="text-center" th:text="${conta.id}"/>
+						<td th:text="${conta.nome}"/>
+						<td class="text-center" th:text="${{conta.dataNascimento}}"/>
+						<td class="text-center" th:text="|RS ${{conta.valor}}|"/>
+						<td class="text-center">
+							<span class="label" th:text="${conta.status.descricao}"
+								th:classappend="${conta.suspensa ? 'label-danger' : 
+										conta.pendente ? 'label-warning' : 
+										conta.ativa ? 'label-success' : 'label-info'}">
+							</span>
+						</td>
+						<td class="text-center">
+							<a class="btn btn-link btn-xs" th:href="@{/contas/{id}(id=${conta.id})}">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="6" th:if="${#lists.isEmpty(contas)}">Nenhuma conta encontrada.</th>
+						
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</section>
+</html>
