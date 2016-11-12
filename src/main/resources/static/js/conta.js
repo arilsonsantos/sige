@@ -16,5 +16,6 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 });
 
 $(function(){
-	$('[rel="tooltip"]').tooltip()
+	$('[rel="tooltip"]').tooltip();
+	$('.js-money').maskMoney({thousands:'.', decimal:',', allowZero:true, prefix: 'R$ '});
 })
