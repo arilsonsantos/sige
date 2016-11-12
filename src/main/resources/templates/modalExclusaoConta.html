@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://wwww.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.zn/thymeleaf/layout"
+	layout:decorator="layout">
+
+<div class="modal fade" tabindex="-1" id="confirmacaoExclusaoModal" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog">
+		<form th:attr="data-url-base='/contas'" method="POST">
+			<input type="hidden" name="_method" value="DELETE"></input>
+			
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Confirmação</h4>
+				</div>
+				<div class="modal-body">
+					<span>Confirma a exclusão desta conta?</span>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-link" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Excluir</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+</html>

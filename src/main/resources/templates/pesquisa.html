@@ -8,6 +8,9 @@
 </head>
 
 <section layout:fragment="conteudo">
+
+	<div layout:include="mensagem"></div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
@@ -46,6 +49,10 @@
 							<a class="btn btn-link btn-xs" th:href="@{/contas/{id}(id=${conta.id})}">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
+							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal" 
+								th:attr="data-id=${conta.id}">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
 						</td>
 					</tr>
 					<tr>
@@ -54,8 +61,8 @@
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
+		<div layout:include="modalExclusaoConta"></div>
 	</div>
 </section>
 </html>
