@@ -64,4 +64,12 @@ public class ContaController {
 	private List<StatusEnum> findAll(){
 		return Arrays.asList(StatusEnum.values());
 	}
+	
+	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
+	public String excluir(@PathVariable Long id, RedirectAttributes atributes){
+		System.out.println("Número do ID" + id);
+		contaRepository.delete(id);
+		atributes.addFlashAttribute("mensagem", "Conta excluída com sucesso.");
+		return "redirect:/contas";
+	}
 }
