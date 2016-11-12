@@ -16,59 +16,60 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.orion.model.Conta;
 import br.com.orion.model.enumarate.StatusEnum;
-import br.com.orion.repository.ContaRepository;
+import br.com.orion.service.ContaService;
 
 @Controller
 @RequestMapping("/contas")
 public class ContaController {
 
+
 	@Autowired
-	ContaRepository contaRepository;
-	
+	ContaService contaService;
+
 	@RequestMapping("/novo")
-	public ModelAndView novo(){
+	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("conta");
 		mv.addObject(new Conta());
 		return mv;
 	}
-	
-	@RequestMapping(method=RequestMethod.POST)
-	public String list(@Validated Conta conta, Errors erros, RedirectAttributes atributes){
-		if (erros.hasErrors()){
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String list(@Validated Conta conta, Errors erros, RedirectAttributes atributes) {
+		if (erros.hasErrors()) {
 			return "conta";
 		}
-		
-		contaRepository.save(conta);
-		atributes.addFlashAttribute("mensagem", "Conta gravada com sucesso.");
-		return "redirect:/contas/novo";
+			contaService.salvar(conta);
+			atributes.addFlashAttribute("mensagem", "Conta gravada com sucesso.");
+			return "redirect:/contas/novo";
 	}
-	
+
 	@RequestMapping
-	public ModelAndView pesquisa(){
-		List<Conta> contas = contaRepository.findAll();
+	public ModelAndView pesquisa() {
+		List<Conta> contas = contaService.findAll();
 		ModelAndView mv = new ModelAndView("pesquisa");
 		mv.addObject("contas", contas);
 		return mv;
 	}
-	
+
 	@RequestMapping("{id}")
-	public ModelAndView edicao(@PathVariable("id") Conta conta){
-		//Conta conta = contaRepository.findOne(id); Spring com JPARepository detecta 
-		//a necessidade  da busca através do parametro @PathVariable("id")s
+	public ModelAndView edicao(@PathVariable("id") Conta conta) {
+		// Conta conta = contaRepository.findOne(id); Spring com JPARepository
+		// detecta
+		// a necessidade da busca através do parametro @PathVariable("id")s
 		ModelAndView mv = new ModelAndView("conta");
 		mv.addObject(conta);
 		return mv;
 	}
-	
+
 	@ModelAttribute("statusEnuns")
-	private List<StatusEnum> findAll(){
+	private List<StatusEnum> findAll() {
 		return Arrays.asList(StatusEnum.values());
 	}
-	
-	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
-	public String excluir(@PathVariable Long id, RedirectAttributes atributes){
+
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long id, RedirectAttributes atributes) {
 		System.out.println("Número do ID" + id);
-		contaRepository.delete(id);
+		contaService.excluir(id);
 		atributes.addFlashAttribute("mensagem", "Conta excluída com sucesso.");
 		return "redirect:/contas";
 	}
