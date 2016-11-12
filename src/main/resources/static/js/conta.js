@@ -14,3 +14,7 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	form.attr('action', action + idConta);
 
 });
+
+$(function(){
+	$('[rel="tooltip"]').tooltip()
+})
