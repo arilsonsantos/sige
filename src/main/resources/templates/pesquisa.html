@@ -37,7 +37,7 @@
 						<td class="text-center" th:text="${conta.id}"/>
 						<td th:text="${conta.nome}"/>
 						<td class="text-center" th:text="${{conta.dataNascimento}}"/>
-						<td class="text-center" th:text="${{conta.valor}}"/>
+						<td class="text-right" th:text="${{conta.valor}}"/>
 						<td class="text-center">
 							<span class="label" th:text="${conta.status.descricao}"
 								th:classappend="${conta.suspensa ? 'label-danger' : 
