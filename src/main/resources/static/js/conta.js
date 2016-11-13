@@ -1,5 +1,4 @@
 $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
-
 	var button = $(event.relatedTarget);
 
 	var idConta = button.data('id');
@@ -7,12 +6,12 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	var modal = $(this);
 	var form = modal.find('form');
 	var action = form.data('url-base')
+	
 	if (!action.endsWith('/')) {
 		action += '/';
 	}
 
 	form.attr('action', action + idConta);
-
 });
 
 $(function(){
@@ -41,6 +40,5 @@ $(function(){
 			console.log(e);
 			alert('Erro ao atualizar status');
 		});
-		
 	});
 })
