@@ -31,7 +31,7 @@ public class ContaService {
 		Conta conta = contaRepository.getOne(id);
 		conta.setStatus(StatusEnum.ATIVA);
 		salvar(conta);
-		return conta.getStatus().getDescricao();
+		return StatusEnum.ATIVA.getDescricao();
 	}
 	
 	
