@@ -27,10 +27,11 @@ public class ContaService {
 		contaRepository.delete(id);
 	}
 	
-	public void ativarConta(Long id){
+	public String ativarConta(Long id){
 		Conta conta = contaRepository.getOne(id);
 		conta.setStatus(StatusEnum.ATIVA);
 		salvar(conta);
+		return conta.getStatus().getDescricao();
 	}
 	
 	
