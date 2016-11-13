@@ -69,7 +69,6 @@ public class ContaController {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long id, RedirectAttributes atributes) {
-		System.out.println("Número do ID" + id);
 		contaService.excluir(id);
 		atributes.addFlashAttribute("mensagem", "Conta excluída com sucesso.");
 		return "redirect:/contas";
@@ -77,8 +76,6 @@ public class ContaController {
 	
 	@RequestMapping(value = "/{id}/ativar", method = RequestMethod.PUT)
 	public @ResponseBody String ativar(@PathVariable Long id){
-		contaService.ativarConta(id);
-		
-		return "Ativa";
+		return contaService.ativarConta(id);
 	}
 }
