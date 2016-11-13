@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -72,5 +73,12 @@ public class ContaController {
 		contaService.excluir(id);
 		atributes.addFlashAttribute("mensagem", "Conta excluída com sucesso.");
 		return "redirect:/contas";
+	}
+	
+	@RequestMapping(value = "/{id}/ativar", method = RequestMethod.PUT)
+	public @ResponseBody String ativar(@PathVariable Long id){
+		contaService.ativarConta(id);
+		
+		return "Ativa";
 	}
 }

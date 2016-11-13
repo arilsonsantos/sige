@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.orion.model.Conta;
+import br.com.orion.model.enumarate.StatusEnum;
 import br.com.orion.repository.ContaRepository;
 
 @Service
@@ -25,4 +26,12 @@ public class ContaService {
 	public void excluir(Long id){
 		contaRepository.delete(id);
 	}
+	
+	public void ativarConta(Long id){
+		Conta conta = contaRepository.getOne(id);
+		conta.setStatus(StatusEnum.ATIVA);
+		salvar(conta);
+	}
+	
+	
 }
