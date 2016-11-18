@@ -34,5 +34,8 @@ public class ContaService {
 		return StatusEnum.ATIVA.getDescricao();
 	}
 	
+	public List<Conta> findByNome(String nome){
+		return contaRepository.findByNomeContaining(nome);
+	}
 	
 }
