@@ -107,16 +107,36 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.17</version>
-				<configuration>
-					<configLocation>${basedir}/checks/orion-checks.xml</configLocation>
-					<propertiesLocation>${basedir}/checks/check-style-maven.properties</propertiesLocation>
-				</configuration>
-			</plugin> 
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>7.0</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<configuration>
+							<configLocation>${basedir}/checks/orion-checks.xml</configLocation>
+							<!-- <excludes>**/target/generated-sources/**/*</excludes> -->
+							<consoleOutput>true</consoleOutput>
+							<failOnViolation>true</failOnViolation>
+							<violationSeverity>warning</violationSeverity>
+							<linkXRef>false</linkXRef>
+						</configuration>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 		</plugins>
 	</build>

@@ -34,10 +34,6 @@
 	<property name="fileExtensions" value="java, properties, xml" />
 	<property name="severity" value="warning" />
 
-	<module name="SuppressionFilter">
-     	<property name="file" value="${config_loc}/checks/orion-suppressions.xml"/>
-     	<!-- <property name="file" value="/Volumes/arquivos/desenvolvimento/config/orion-suppressions.xml"/> -->
-	</module>
 	
 	<module name="FileLength" />
 	<module name="RegexpSingleline">
