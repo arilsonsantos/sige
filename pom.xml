@@ -105,10 +105,11 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<!-- <compilerArgument>-proc:none</compilerArgument> -->
 				</configuration>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
@@ -125,10 +126,9 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 		</plugins>
 	</build>
-
 
 </project>
