@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import br.com.orion.model.Conta;
 
 @Repository
-public interface ContaRepository extends JpaRepository<Conta, Long>{
-	
-	public List<Conta> findByNomeContaining(String nome);
+public interface ContaRepository extends JpaRepository<Conta, Long> {
+
+	List<Conta> findByNomeContaining(String nome);
 }
