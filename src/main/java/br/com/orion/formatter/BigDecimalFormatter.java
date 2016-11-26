@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Locale;
 
-import org.springframework.format.Formatter;
-
 import br.com.orion.constant.LocaleConstants;
 import br.com.orion.utils.BigDecimalUtils;
+import org.springframework.format.Formatter;
 
 public class BigDecimalFormatter implements Formatter<BigDecimal> {
+
 
 	@Override
 	public String print(BigDecimal object, Locale locale) {

@@ -46,7 +46,7 @@ public final class StringUtils extends org.apache.commons.lang3.StringUtils {
 			formattedText = maskFormatter.valueToString(text);
 
 		} catch (ParseException ex) {
-			log.warn(ex.getMessage(),  ex);
+			log.warn(ex.getMessage(), ex);
 			formattedText = text;
 		}
 

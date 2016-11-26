@@ -10,7 +10,7 @@ import org.springframework.format.Formatter;
 import br.com.orion.utils.DateUtils;
 
 public class LocalDateFormatter implements Formatter<LocalDate> {
-	
+
 	public static final String PATTERN = "dd/MM/yyyy";
 
 	@Override
@@ -20,10 +20,10 @@ public class LocalDateFormatter implements Formatter<LocalDate> {
 
 	@Override
 	public LocalDate parse(String text, Locale locale) throws ParseException {
-		return LocalDate.parse(text,  DateTimeFormatter.ofPattern(getPattern(locale)));
+		return LocalDate.parse(text, DateTimeFormatter.ofPattern(getPattern(locale)));
 	}
 
 	public static String getPattern(Locale locale) {
-		return PATTERN;	
+		return PATTERN;
 	}
 }

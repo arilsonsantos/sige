@@ -29,13 +29,14 @@ public final class BigDecimalUtils extends NumberUtils {
 
 	/**
 	 * <p>
-	 * Faz um parse da <code>String</code> para produzir um <code>BigDecimal</code> de acordo com o formato informado. O
-	 * parse é não lenient, ou seja, a entrada deve corresponder ao formato informado.
+	 * Faz um parse da <code>String</code> para produzir um
+	 * <code>BigDecimal</code> de acordo com o formato informado. O parse é não
+	 * lenient, ou seja, a entrada deve corresponder ao formato informado.
 	 * </p>
 	 *
 	 * <p>
-	 * <b>NOTA:</b> Caso o formato não seja informado será considerado o formato default
-	 * {@value #DEFAULT_DECIMAL_PATTERN}.
+	 * <b>NOTA:</b> Caso o formato não seja informado será considerado o formato
+	 * default {@value #DEFAULT_DECIMAL_PATTERN}.
 	 * </p>
 	 *
 	 * <pre>
@@ -47,17 +48,18 @@ public final class BigDecimalUtils extends NumberUtils {
 	 * </pre>
 	 *
 	 * @param source
-	 *        uma <code>String</code> que representa o valor decimal
+	 *            uma <code>String</code> que representa o valor decimal
 	 * @param pattern
-	 *        o formato decimal
+	 *            o formato decimal
 	 *
 	 * @return um <code>BigDecimal</code> criado a partir da <code>String</code>
 	 *
 	 * @throws ApplicationException
-	 *         se a <code>String</code> informada não puder ser parseada
+	 *             se a <code>String</code> informada não puder ser parseada
 	 * @throws IllegalArgumentException
-	 *         se a <code>String</code> ou o formato informado for <code>null</code>, vazio <code>("")</code> ou espaço
-	 *         em branco <code>(" ")</code>
+	 *             se a <code>String</code> ou o formato informado for
+	 *             <code>null</code>, vazio <code>("")</code> ou espaço em
+	 *             branco <code>(" ")</code>
 	 */
 	public static BigDecimal parse(final String source, final String pattern) {
 		try {
@@ -81,18 +83,16 @@ public final class BigDecimalUtils extends NumberUtils {
 		return parse(source, DEFAULT_DECIMAL_PATTERN);
 	}
 
-	
-
-	
 	/**
 	 * <p>
-	 * Faz um parse da <code>String</code> para produzir um valor numérico. Se o parse for lenient, então ao ocorrer uma
-	 * exceção durante o parse será retornado <code>null</code>.
+	 * Faz um parse da <code>String</code> para produzir um valor numérico. Se o
+	 * parse for lenient, então ao ocorrer uma exceção durante o parse será
+	 * retornado <code>null</code>.
 	 * </p>
 	 *
 	 * <p>
-	 * <b>NOTA:</b> Caso o formato não seja informado será considerado o formato default
-	 * {@value #DEFAULT_DECIMAL_PATTERN}.
+	 * <b>NOTA:</b> Caso o formato não seja informado será considerado o formato
+	 * default {@value #DEFAULT_DECIMAL_PATTERN}.
 	 * </p>
 	 *
 	 * <pre>
@@ -107,17 +107,20 @@ public final class BigDecimalUtils extends NumberUtils {
 	 * </pre>
 	 *
 	 * @param source
-	 *        uma <code>String</code> que representa o valor numérico
+	 *            uma <code>String</code> que representa o valor numérico
 	 * @param lenient
-	 *        um <code>boolean</code> que indica se o parse vai ser realizado de forma lenient ou não
+	 *            um <code>boolean</code> que indica se o parse vai ser
+	 *            realizado de forma lenient ou não
 	 * @param pattern
-	 *        uma <code>String</code> que representa o formato utilizado no parseamento
+	 *            uma <code>String</code> que representa o formato utilizado no
+	 *            parseamento
 	 *
 	 * @return um <code>BigDecimal</code> criado a partir da <code>String</code>
 	 *
 	 * @exception IllegalArgumentException
-	 *            se o texto informado for <code>null</code>, vazio <code>("")</code> ou espaço em branco
-	 *            <code>(" ")</code> quando o lenient for <code>false</code>
+	 *                se o texto informado for <code>null</code>, vazio
+	 *                <code>("")</code> ou espaço em branco <code>(" ")</code>
+	 *                quando o lenient for <code>false</code>
 	 */
 	public static BigDecimal parse(final String source, final boolean lenient, final String pattern) {
 		BigDecimal decimal = null;
@@ -133,24 +136,23 @@ public final class BigDecimalUtils extends NumberUtils {
 
 		return decimal;
 	}
-	
+
 	public static BigDecimal parse(String text, Locale locale) throws ParseException {
 		DecimalFormat format = (DecimalFormat) NumberFormat.getNumberInstance(LocaleConstants.PT_BR);
-        format.applyPattern(BigDecimalUtils.DEFAULT_DECIMAL_PATTERN);
-        format.setParseBigDecimal(true);
-        format.setGroupingUsed(true);
-        return (BigDecimal) parse(text);
+		format.applyPattern(BigDecimalUtils.DEFAULT_DECIMAL_PATTERN);
+		format.setParseBigDecimal(true);
+		format.setGroupingUsed(true);
+		return parse(text);
 	}
 
 	public static BigDecimal parse(final String source, final boolean lenient) {
 		return parse(source, lenient, DEFAULT_DECIMAL_PATTERN);
 	}
-	
-	
 
 	/**
 	 * <p>
-	 * Retorna o <code>BigDecimal</code> informado ou <code>BigDecimal.ZERO</code> caso o valor informado seja
+	 * Retorna o <code>BigDecimal</code> informado ou
+	 * <code>BigDecimal.ZERO</code> caso o valor informado seja
 	 * <code>null</code>.
 	 * </p>
 	 *
@@ -160,9 +162,10 @@ public final class BigDecimalUtils extends NumberUtils {
 	 * </pre>
 	 *
 	 * @param decimal
-	 *        valor a ser analisado
+	 *            valor a ser analisado
 	 *
-	 * @return o <code>BigDecimal</code> informado ou <code>BigDecimal.ZERO</code> se for <code>null</code>
+	 * @return o <code>BigDecimal</code> informado ou
+	 *         <code>BigDecimal.ZERO</code> se for <code>null</code>
 	 *
 	 */
 	public static BigDecimal defaultBigDecimal(final BigDecimal decimal) {
@@ -179,8 +182,8 @@ public final class BigDecimalUtils extends NumberUtils {
 	 * </p>
 	 *
 	 * <p>
-	 * <b>NOTA:</b> Caso o formato não seja informado será considerado o formato default
-	 * {@value #DEFAULT_DECIMAL_PATTERN}.
+	 * <b>NOTA:</b> Caso o formato não seja informado será considerado o formato
+	 * default {@value #DEFAULT_DECIMAL_PATTERN}.
 	 * </p>
 	 *
 	 * <pre>
@@ -193,11 +196,11 @@ public final class BigDecimalUtils extends NumberUtils {
 	 * </pre>
 	 *
 	 * @param decimal
-	 *        valor a ser analisado
+	 *            valor a ser analisado
 	 * @param locale
-	 *        locale a ser utilizado para a fotmatação
+	 *            locale a ser utilizado para a fotmatação
 	 * @param pattern
-	 *        formato a ser utilizado para mascarar o valor decimal
+	 *            formato a ser utilizado para mascarar o valor decimal
 	 *
 	 * @return valor formatado
 	 *
