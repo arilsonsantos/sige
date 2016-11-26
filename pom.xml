@@ -105,27 +105,17 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-					<!-- <compilerArgument>-proc:none</compilerArgument> -->
 				</configuration>
 			</plugin>
 
 			<!-- <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources/annotations/</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<configLocation>/Volumes/arquivos/desenvolvimento/config/orion-checks.xml</configLocation>
+					<suppressionsLocation>/Volumes/arquivos/desenvolvimento/config/orion-suppressions.xml</suppressionsLocation>
+					<propertiesLocation>${basedir}/checks/check-style-maven.properties</propertiesLocation>
+				</configuration>
 			</plugin> -->
 
 		</plugins>
