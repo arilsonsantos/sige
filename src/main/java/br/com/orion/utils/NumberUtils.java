@@ -6,7 +6,6 @@ import org.springframework.data.util.Pair;
 
 import com.google.common.base.Splitter;
 
-
 public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
 	public static final String BLANK_PARAMETER_MESSAGE = "O valor a ser parseado não pode ser null, vazio (\"\") ou espaço em branco (\" \").";
@@ -26,7 +25,8 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
 	public static Pair<? extends Number, ? extends Number> getRange(final String source) {
 		Iterator<String> iterator = Splitter.on("-").omitEmptyStrings().trimResults().split(source).iterator();
-		Pair<? extends Number, ? extends Number> range = iterator.hasNext() ? Pair.of(createNumber(iterator.next()), createNumber(iterator.next())) : null;
+		Pair<? extends Number, ? extends Number> range = iterator.hasNext()
+				? Pair.of(createNumber(iterator.next()), createNumber(iterator.next())) : null;
 
 		return range;
 	}

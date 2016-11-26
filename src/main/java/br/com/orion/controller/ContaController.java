@@ -24,9 +24,8 @@ import br.com.orion.service.ContaService;
 @RequestMapping("/contas")
 public class ContaController {
 
-
 	@Autowired
-	ContaService contaService;
+	private ContaService contaService;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
@@ -40,13 +39,13 @@ public class ContaController {
 		if (erros.hasErrors()) {
 			return "conta";
 		}
-			contaService.salvar(conta);
-			atributes.addFlashAttribute("mensagem", "Conta gravada com sucesso.");
-			return "redirect:/contas/novo";
+		contaService.salvar(conta);
+		atributes.addFlashAttribute("mensagem", "Conta gravada com sucesso.");
+		return "redirect:/contas/novo";
 	}
 
 	@RequestMapping
-	public ModelAndView pesquisa(@RequestParam(defaultValue="%") String nome) {
+	public ModelAndView pesquisa(@RequestParam(defaultValue = "%") String nome) {
 		List<Conta> contas = contaService.findByNome(nome);
 		ModelAndView mv = new ModelAndView("pesquisa");
 		mv.addObject("contas", contas);
@@ -61,6 +60,7 @@ public class ContaController {
 		ModelAndView mv = new ModelAndView("conta");
 		mv.addObject(conta);
 		return mv;
+
 	}
 
 	@ModelAttribute("statusEnuns")
@@ -74,9 +74,9 @@ public class ContaController {
 		atributes.addFlashAttribute("mensagem", "Conta excluída com sucesso.");
 		return "redirect:/contas";
 	}
-	
+
 	@RequestMapping(value = "/{id}/ativar", method = RequestMethod.PUT)
-	public @ResponseBody String ativar(@PathVariable Long id){
+	public @ResponseBody String ativar(@PathVariable Long id) {
 		return contaService.ativarConta(id);
 	}
 }
