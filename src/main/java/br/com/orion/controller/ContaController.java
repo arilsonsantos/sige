@@ -64,7 +64,7 @@ public class ContaController {
 	}
 
 	@ModelAttribute("statusEnuns")
-	private List<StatusEnum> findAll() {
+	public List<StatusEnum> findAll() {
 		return Arrays.asList(StatusEnum.values());
 	}
 
