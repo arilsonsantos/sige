@@ -9,7 +9,7 @@ import java.util.Locale;
 import br.com.orion.constant.LocaleConstants;
 import br.com.orion.exception.ApplicationException;
 
-public final class BigDecimalUtils extends NumberUtils {
+public final class BigDecimalUtils extends AbstractNumberUtils {
 
 	/**
 	 * <p>
