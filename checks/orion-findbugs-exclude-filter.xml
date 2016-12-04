@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+	<Match>
+		<Or>
+		<Bug pattern="DM_CONVERT_CASE" />
+		<Bug pattern="EI_EXPOSE_REP" />
+		<Bug pattern="EI_EXPOSE_REP2" />
+		</Or>
+	</Match>
+
+	<!-- ORION -->
+	<Match>
+		<Class name="~.*\.*_" />
+	</Match>
+	<Match>
+		<Package name="~br\.com\.orion\..*" />
+		<Or>
+			<Bug pattern="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" />
+			<Bug pattern="CD_CIRCULAR_DEPENDENCY" />
+			<Bug pattern="EI_EXPOSE_REP" />
+			<Bug pattern="EI_EXPOSE_REP2" />
+		</Or>
+	</Match>
+	
+	<Match>
+		<Class name="~.*\.*Manager" />
+		<Bug pattern="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR" />
+	</Match>
+	
+</FindBugsFilter>

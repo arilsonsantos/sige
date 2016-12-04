@@ -27,14 +27,16 @@ public final class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
 	/**
 	 * <p>
-	 * Formato padrão <code>dd/MM/yyyy HH:mm:ss</code> aplicado em timestamp ou data com hora.
+	 * Formato padrão <code>dd/MM/yyyy HH:mm:ss</code> aplicado em timestamp ou
+	 * data com hora.
 	 * </p>
 	 */
 	public static final String DEFAULT_TIMESTAMP_PATTERN = "dd/MM/yyyy HH:mm:ss";
 
 	/**
 	 * <p>
-	 * Formato <code>yyyyMMdd</code> aplicado em datas oriunda de arquivos utilizados em processamento.
+	 * Formato <code>yyyyMMdd</code> aplicado em datas oriunda de arquivos
+	 * utilizados em processamento.
 	 * </p>
 	 */
 	public static final String DATE_PATTERN_YYYYMMDD = "yyyyMMdd";
@@ -91,7 +93,8 @@ public final class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	}
 
 	private static boolean isBusinessDay(LocalDate localDate) {
-		boolean isBusinessDay = !(localDate.getDayOfWeek() == DayOfWeek.SATURDAY || localDate.getDayOfWeek() == DayOfWeek.SUNDAY);
+		boolean isBusinessDay = !(localDate.getDayOfWeek() == DayOfWeek.SATURDAY
+				|| localDate.getDayOfWeek() == DayOfWeek.SUNDAY);
 		return isBusinessDay;
 	}
 
