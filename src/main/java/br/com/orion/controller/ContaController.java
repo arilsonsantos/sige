@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.orion.model.Conta;
 import br.com.orion.model.enumarate.StatusEnum;
+import br.com.orion.model.filter.ContaFilter;
 import br.com.orion.service.ContaService;
 
 @Controller
@@ -45,8 +45,8 @@ public class ContaController {
 	}
 
 	@RequestMapping
-	public ModelAndView pesquisa(@RequestParam(defaultValue = "%") String nome) {
-		List<Conta> contas = contaService.findByNome(nome);
+	public ModelAndView pesquisa(@ModelAttribute("contaFilter") ContaFilter filter) {
+		List<Conta> contas = contaService.findByNome(filter.getNome());
 		ModelAndView mv = new ModelAndView("pesquisa");
 		mv.addObject("contas", contas);
 		return mv;
