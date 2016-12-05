@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://wwww.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.zn/thymeleaf/layout" layout:decorator="layout">
+<html xmlns="http://wwww.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.zn/thymeleaf/layout" layout:decorator="layout">
 <head>
 <title>Cadastro de Conta</title>
 </head>
-
 <section layout:fragment="conteudo">
-
 	<div layout:include="mensagem"></div>
-
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
 				<h1 class="panel-title sige-titulo-panel">Pesquisa</h1>
-				<a class="btn btn-link sige-link-panel" href="/contas/novo">Nova Conta</a>
+				<a class="btn btn-link sige-link-panel" th:href="@{/contas/novo}">Nova Conta</a>
 			</div>
 		</div>
-
 		<div class="panel-body">
-			<form method="GET" class="form-horizontal">
+			<form method="GET" class="form-horizontal" th:action="@{/contas}" th:object="${contaFilter}">
 				<div class="form-group">
 					<div class="col-sm-4">
 						<div class="input-group">
-							<input class="form-control" placeholder="Localizar conta..." autofocus="autofocus" name="nome"></input>
+							<input class="form-control" placeholder="Localizar conta..." autofocus="autofocus" th:field="*{nome}" /> 
 							<span class="input-group-btn">
 								<button type="submit" class="btn btn-default btn-default-height">
 									<i class="glyphicon glyphicon-search"></i>
@@ -32,54 +27,39 @@
 					</div>
 				</div>
 			</form>
-			
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th class="text-center col-md-1">#</th>
-						<th>Descrição</th>
-						<th class="text-center col-md-2">Data de vencimento</th>
-						<th class="text-center col-md-2">Valor</th>
-						<th class="text-center col-md-2">Status</th>
-						<th class="col-md-1"></th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr th:each="conta: ${contas}">
-						<td class="text-center" th:text="${conta.id}" />
-						<td th:text="${conta.nome}" />
-						<td class="text-center" th:text="${{conta.dataNascimento}}" />
-						<td class="text-right" th:text="${{conta.valor}}" />
-						<td class="text-center" th:attr="data-role=${conta.id}">
-							<span class="label" th:text="${conta.status.descricao}"
-								th:classappend="${conta.suspensa ? 'label-danger' : 
-											conta.pendente ? 'label-warning' : 
-											conta.ativa ? 'label-success' : 'label-info'}">
-						</span>
-						</td>
-						<td class="text-center">
-							<a class="btn btn-link btn-xs"
-								th:href="@{/contas/{id}(id=${conta.id})}" title="Editar" rel="tooltip" data-placement="top">
-									<span class="glyphicon glyphicon-pencil" title="Editar"></span>
-							</a> 
-							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-								th:attr="data-id=${conta.id}" title="Excluir" rel="tooltip" data-placement="top"> 
-								<span	class="glyphicon glyphicon-remove"></span>
-							</a> 
-							<a class="btn btn-link btn-xs js-atualizar-status" th:if="${conta.pendente}" title="Ativar" rel="tooltip" 
-							 	th:attr="data-id=${conta.id}" data-placement="top" 
-							 	th:href="@{/contas/{id}/ativar(id=${conta.id})}"> 
-								<span class="glyphicon glyphicon-ok"></span>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<th colspan="6" th:if="${#lists.isEmpty(contas)}">Nenhuma conta encontrada.</th>
-
-					</tr>
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th class="text-center col-md-1">#</th>
+							<th>Descrição</th>
+							<th class="text-center col-md-2">Data de vencimento</th>
+							<th class="text-center col-md-2">Valor</th>
+							<th class="text-center col-md-2">Status</th>
+							<th class="col-md-1"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="conta: ${contas}">
+							<td class="text-center" th:text="${conta.id}" />
+							<td th:text="${conta.nome}" />
+							<td class="text-center" th:text="${{conta.dataNascimento}}" />
+							<td class="text-right" th:text="${{conta.valor}}" />
+							<td class="text-center" th:attr="data-role=${conta.id}">
+								<span class="label" th:in th:text="${conta.status.descricao}" th:classappend="${conta.suspensa ? 'label-danger' : 
+											conta.pendente ? 'label-warning' : 	conta.ativa ? 'label-success' : 'label-info'}"> 
+								</span></td>
+							<td class="text-center"><a class="btn btn-link btn-xs" th:href="@{/contas/{id}(id=${conta.id})}" title="Editar" rel="tooltip" data-placement="top"> <span class="glyphicon glyphicon-pencil" title="Editar"></span>
+							</a> <a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal" th:attr="data-id=${conta.id}" title="Excluir" rel="tooltip" data-placement="top"> <span class="glyphicon glyphicon-remove"></span>
+							</a> <a class="btn btn-link btn-xs js-atualizar-status" th:if="${conta.pendente}" title="Ativar" rel="tooltip" th:attr="data-id=${conta.id}" data-placement="top" th:href="@{/contas/{id}/ativar(id=${conta.id})}"> <span class="glyphicon glyphicon-ok"></span>
+							</a></td>
+						</tr>
+						<tr>
+							<th colspan="6" th:if="${#lists.isEmpty(contas)}">Nenhuma conta encontrada.</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div layout:include="modalExclusaoConta"></div>
 	</div>

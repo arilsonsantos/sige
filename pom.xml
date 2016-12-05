@@ -94,8 +94,8 @@
 	</dependencies>
 
 	<build>
-
-
+		<finalName>sige</finalName>
+		
 		<pluginManagement>
 			<plugins>
 
@@ -143,7 +143,7 @@
 										<ignore></ignore>
 									</action>
 								</pluginExecution>
-								
+
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>org.apache.maven.plugins</groupId>
@@ -165,13 +165,12 @@
 			</plugins>
 		</pluginManagement>
 
-
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
@@ -184,7 +183,6 @@
 					<failOnError>true</failOnError>
 				</configuration>
 				<executions>
-					<!-- Ensures that FindBugs inspects source code when project is compiled. -->
 					<execution>
 						<id>analyze-compile</id>
 						<phase>compile</phase>
@@ -224,7 +222,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -246,15 +244,15 @@
 
 		</plugins>
 	</build>
-	
+
 	<reporting>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jxr-plugin</artifactId>
-            <version>2.3</version>
-        </plugin>
-    </plugins>
-</reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
