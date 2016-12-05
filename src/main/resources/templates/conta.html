@@ -10,7 +10,7 @@
 
 <section layout:fragment="conteudo">
 
-	<form class="form-horizontal" method="POST" action="/contas"
+	<form class="form-horizontal" method="POST" th:action="@{/contas}"
 		th:object="${conta}">
 
 		<div layout:include="mensagem"></div>
@@ -22,7 +22,7 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class="panel-title sige-titulo-panel">Nova conta</h1>
-					<a class="btn btn-link sige-link-panel" href="/contas">Lista</a>
+					<a class="btn btn-link sige-link-panel" th:href="@{/contas}">Lista</a>
 				</div>
 			</div>
 
@@ -58,8 +58,7 @@
 				<div class="form-group">
 					<label for="valor" class="col-sm-2 control-label">Valor:</label>
 					<div class="col-sm-2">
-						<input type="text" id="valorInicial" class="form-control js-money"
-							th:field="*{{valor}}" />
+						<input type="text" id="valorInicial" class="form-control js-money" th:field="*{{valor}}" />
 					</div>
 				</div>
 
