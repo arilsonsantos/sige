@@ -34,8 +34,9 @@ public class ContaService {
 		return StatusEnum.ATIVA.getDescricao();
 	}
 
-	public List<Conta> findByNome(String nome) {
-		return contaRepository.findByNomeContaining(nome);
+	public List<Conta> findByNome(String filter) {
+		filter = filter == null ? "%" : filter;
+		return contaRepository.findByNomeContaining(filter);
 	}
 
 }
