@@ -12,5 +12,10 @@
 
 
 
+###### Telas responsivas
+![ScreenShot](https://raw.github.com/arilsonsantos/sige/desenvolvimento/src/main/resources/static/images/tela_cadastro_responsiva.png)
+
+
+
 ###### Tabela de pesquisa de exemplo 
 ![ScreenShot](https://raw.github.com/arilsonsantos/sige/desenvolvimento/src/main/resources/static/images/tela_pesquisa.png)
