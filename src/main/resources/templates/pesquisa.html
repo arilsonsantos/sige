@@ -46,7 +46,7 @@
 							<td class="text-center" th:text="${{conta.dataNascimento}}" />
 							<td class="text-right" th:text="${{conta.valor}}" />
 							<td class="text-center" th:attr="data-role=${conta.id}">
-								<span class="label" th:in th:text="${conta.status.descricao}" th:classappend="${conta.suspensa ? 'label-danger' : 
+								<span class="label" th:text="${conta.status.descricao}" th:classappend="${conta.suspensa ? 'label-danger' : 
 											conta.pendente ? 'label-warning' : 	conta.ativa ? 'label-success' : 'label-info'}"> 
 								</span></td>
 							<td class="text-center"><a class="btn btn-link btn-xs" th:href="@{/contas/{id}(id=${conta.id})}" title="Editar" rel="tooltip" data-placement="top"> <span class="glyphicon glyphicon-pencil" title="Editar"></span>

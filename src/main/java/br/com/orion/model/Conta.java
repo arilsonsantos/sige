@@ -32,6 +32,15 @@ public class Conta {
 	@Enumerated(EnumType.STRING)
 	private StatusEnum status;
 
+	public Conta() {
+
+	}
+
+	public Conta(String nome, LocalDate dataNascimento) {
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+	}
+
 	public boolean isAtiva() {
 		return StatusEnum.ATIVA.equals(this.status);
 	}
