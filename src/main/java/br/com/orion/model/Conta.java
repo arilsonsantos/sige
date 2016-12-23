@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.orion.model.enumarate.StatusEnum;
 import lombok.Data;
 
@@ -25,12 +27,22 @@ public class Conta {
 	@Size(min = 5, max = 100, message = "{conta.nome.Size}")
 	private String nome;
 
+	@JsonFormat(pattern = "ddMMyyyy")
 	private LocalDate dataNascimento;
 
 	private BigDecimal valor;
 
 	@Enumerated(EnumType.STRING)
 	private StatusEnum status;
+
+	public Conta() {
+
+	}
+
+	public Conta(String nome, LocalDate dataNascimento) {
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+	}
 
 	public boolean isAtiva() {
 		return StatusEnum.ATIVA.equals(this.status);
