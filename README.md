@@ -19,3 +19,5 @@
 
 ###### Tabela de pesquisa de exemplo 
 ![ScreenShot](https://raw.github.com/arilsonsantos/sige/desenvolvimento/src/main/resources/static/images/tela_pesquisa.png)
+
+###### Arilson Santos
